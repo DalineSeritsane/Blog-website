@@ -6,8 +6,8 @@ function Header() {
   return (
     <div className="header">
       <div className="headerTitles">
-        <span className="headerTitleSm">React </span>
-        <span className="headerTitleLg">Blog</span>
+        <span className="headerTitleSm">Explore Amazing Vaccations!</span>
+        <span className="headerTitleLg">COUPLES ABROAD</span>
 
       </div>
       <img className="headerImg"
