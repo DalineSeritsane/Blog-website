@@ -1,6 +1,7 @@
 import React from 'react'
 import "./post.css";
 import france from "../Image/france.jpg";
+import BodyWater from "../Image/BodyWater.jpg"; 
 
  function Post() {
   return (

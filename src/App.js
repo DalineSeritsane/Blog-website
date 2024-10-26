@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Navbar from "./Navbar/Navbar";
 import Single from "./pages/single/Single";
@@ -9,22 +9,19 @@ import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 
 function App() {
+  const user = true;
   return (
-    <div className="App">
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/write" element={<Write />} />
-          <Route path="/setting" element={<Setting />} />
-          <Route path="/post/postId">
-          <Single />
-          </Route>
-        </Routes>
-      </Router>
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+      <Route path="/" exact element={<Home></Home>}></Route> 
+          <Route path="/register" element={user ? <Home/> : <Register />} ></Route>
+          <Route path="/login" element={user ? <Home/> : <Login />} ></Route>
+          <Route path="/write" element={user ? <Write /> : <Register />} ></Route>
+          <Route path="/setting" element={user ? <Setting /> : <Register/>} ></Route>
+          <Route path="/post/:postId" element={<Single />} ></Route> 
+      </Routes>
+    </Router>
   );
 }
 

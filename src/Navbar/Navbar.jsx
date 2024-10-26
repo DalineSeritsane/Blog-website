@@ -1,8 +1,10 @@
 import React from 'react'
 import "./Navbar.css";
 import profile from "../Image/profile.jpg";
+import { Link } from 'react-router-dom';
 
 function Navbar() {
+  const user = false;
   return (
     <div className="nav">
       <div className="navLeft">
@@ -13,17 +15,44 @@ function Navbar() {
       </div>
       <div className="navCenter">
         <ul className="navList">
-            <li className="navListItem">HOME</li>
-            <li className="navListItem">ABOUT</li>
-            <li className="navListItem">CONTACT</li>
-            <li className="navListItem">WRITE</li>
-            <li className="navListItem">LOGOUT</li>
+            <li className="navListItem">
+              <Link className="link" to="/">HOME</Link>
+            </li>
+            <li className="navListItem">
+               <Link className="link" to="/about">ABOUT</Link></li>
+            <li className="navListItem">
+            <Link className="link" to="/contact">CONTACT</Link>
+            </li>
+            <li className="navListItem">
+            <Link className="link" to="/write">WRITE</Link>
+            </li>
+            <li className="navListItem">
+              {user && "LOGOUT"}
+            </li>
         </ul>
       </div>
       <div className="navRight">
-        <img className="navImg"
+        {
+          user ? (
+            <img className="navImg"
          src={profile}  
         alt=''></img>
+          ) : (
+            <ul className="navList">
+              <li className="navListItem">
+            <Link className="link" to="/login">
+            LOGIN
+            </Link>
+          </li>
+          <li className="navListItem">
+            <Link className="link" to="/register">
+            REGISTER
+            </Link>
+          </li>
+            </ul>
+          )
+        }
+        
         <i className="searchIcon fa-solid fa-magnifying-glass"></i>
       </div>
     </div>
