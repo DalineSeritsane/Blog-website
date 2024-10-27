@@ -2,11 +2,13 @@ import React from 'react';
 import './post.css';
 import france from '../Image/france.jpg';
 import BodyWater from '../Image/BodyWater.jpg';
-//import beach from '../Image/beach.jpg'; // Add more images if available
+import beach from '../Image/beach.jpg'; 
+import losvegas from '../Image/losvegas.jpg';
+
 
 function Post() {
   // Array of images
-  const images = [france, BodyWater];
+  const images = [france, BodyWater, beach, losvegas];
 
   // Function to randomly select an image
   const randomImage = images[Math.floor(Math.random() * images.length)];
