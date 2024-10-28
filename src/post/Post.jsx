@@ -4,6 +4,7 @@ import france from '../Image/france.jpg';
 import BodyWater from '../Image/BodyWater.jpg';
 import beach from '../Image/beach.jpg'; 
 import losvegas from '../Image/losvegas.jpg';
+import pool from '../Image/pool.jpg'
 
 
 function Post() {
