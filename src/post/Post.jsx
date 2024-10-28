@@ -9,7 +9,7 @@ import pool from '../Image/pool.jpg'
 
 function Post() {
   // Array of images
-  const images = [france, BodyWater, beach, losvegas];
+  const images = [france, BodyWater, beach, losvegas, pool];
 
   // Function to randomly select an image
   const randomImage = images[Math.floor(Math.random() * images.length)];
