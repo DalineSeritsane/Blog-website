@@ -11,7 +11,7 @@ import About from "./pages/about/About";
 import Contact from "./pages/contact/Contact";
 
 function App() {
-  const user = true;
+  const user = false;
   return (
     <Router>
       <Navbar />
@@ -21,7 +21,7 @@ function App() {
           <Route path="/login" element={user ? <Home/> : <Login />} ></Route>
           <Route path="/about" element={ <About />} ></Route>
           <Route path="/contact" element={ <Contact />} ></Route>
-          <Route path="/write" element={user ? <Write /> : <Register />} ></Route>
+          <Route path="/write" element={ <Write />} ></Route>
           <Route path="/setting" element={user ? <Setting /> : <Register/>} ></Route>
           <Route path="/post/:postId" element={<Single />} ></Route> 
       </Routes>
