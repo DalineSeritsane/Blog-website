@@ -9,6 +9,7 @@ import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import About from "./pages/about/About";
 import Contact from "./pages/contact/Contact";
+import PostDetail from './post/PostDetail';
 
 function App() {
   const user = false;
@@ -16,14 +17,15 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
-      <Route path="/" exact element={<Home></Home>}></Route> 
-          <Route path="/register" element={user ? <Home/> : <Register />} ></Route>
-          <Route path="/login" element={user ? <Home/> : <Login />} ></Route>
-          <Route path="/about" element={ <About />} ></Route>
-          <Route path="/contact" element={ <Contact />} ></Route>
-          <Route path="/write" element={ <Write />} ></Route>
+      <Route path="/" exact element={<Home />}></Route> 
+          <Route path="/register" element={ <Register />} />
+          <Route path="/login" element={ <Login />} />
+          <Route path="/about" element={ <About />} />
+          <Route path="/contact" element={ <Contact />} />
+          <Route path="/write" element={ <Write />} />
           <Route path="/setting" element={user ? <Setting /> : <Register/>} ></Route>
-          <Route path="/post/:postId" element={<Single />} ></Route> 
+          <Route path="/post/:Id" element={<PostDetail />} />
+          <Route path="/single" element={ <Single />} />
       </Routes>
     </Router>
   );
