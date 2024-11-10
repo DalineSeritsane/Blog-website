@@ -10,6 +10,9 @@ import Register from "./pages/register/Register";
 import About from "./pages/about/About";
 import Contact from "./pages/contact/Contact";
 import PostDetail from './post/PostDetail';
+import CreatePost from './post/CreatePost';
+import Post from './post/Post';
+import Posts from "./posts/Posts";
 
 function App() {
   const user = false;
@@ -24,8 +27,10 @@ function App() {
           <Route path="/contact" element={ <Contact />} />
           <Route path="/write" element={ <Write />} />
           <Route path="/setting" element={user ? <Setting /> : <Register/>} ></Route>
-          <Route path="/post/:Id" element={<PostDetail />} />
+          <Route path="/post/:id" element={<PostDetail />} />
           <Route path="/single" element={ <Single />} />
+          <Route path="/create-post" element={ <CreatePost />} />
+          <Route path="/post" element={ <Post />} />
       </Routes>
     </Router>
   );
