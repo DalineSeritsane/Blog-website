@@ -1,22 +1,57 @@
-import axios from "axios";
+// src/services/api.js
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api'; // Use env variable for API URL
 
-// Create an axios instance for API requests
-const api = axios.create({
-    baseURL: "http://localhost:5000",
-});
+const defaultHeaders = {
+  'Content-Type': 'application/json',
+};
 
-// Add request interceptor to attach the token to all request 
-api.interceptors.request.use(
-    (config)=> {
-        const token = localStorage.getItem("token"); //Get token from localStorage
-        if (token) {
-            config.headers["Authorization"] = `Bearer ${token}`; // Attach token to authorization header
+// Helper function for error messages
+const handleErrors = async (response) => {
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`Error: ${response.status} - ${errorText}`);
+  }
+};
 
-        } return config;
-    },
-    (error) => {
-        return Promise.reject(error);
-    }
-);
+// Fetch all blog posts
+export const fetchBlogs = async () => {
+  const response = await fetch(`${API_URL}/blogs`);
+  await handleErrors(response);
+  return await response.json();
+};
 
-export default api;
+// Create a new blog post
+export const createBlog = async (blogData) => {
+  const response = await fetch(`${API_URL}/blogs`, {
+    method: 'POST',
+    headers: defaultHeaders,
+    body: JSON.stringify(blogData),
+  });
+  await handleErrors(response);
+  return await response.json();
+};
+
+// Fetch a single blog post by ID
+export const fetchBlogById = async (id) => {
+  const response = await fetch(`${API_URL}/blogs/${id}`);
+  await handleErrors(response);
+  return await response.json();
+};
+
+// Fetch comments for a specific blog post
+export const fetchComments = async (blogId) => {
+  const response = await fetch(`${API_URL}/blogs/${blogId}/comments`);
+  await handleErrors(response);
+  return await response.json();
+};
+
+// Post a new comment
+export const postComment = async (blogId, commentData) => {
+  const response = await fetch(`${API_URL}/blogs/${blogId}/comments`, {
+    method: 'POST',
+    headers: defaultHeaders,
+    body: JSON.stringify(commentData),
+  });
+  await handleErrors(response);
+  return await response.json();
+};

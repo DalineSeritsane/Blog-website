@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Home from "./pages/home/Home";
 import Navbar from "./Navbar/Navbar";
@@ -13,10 +13,15 @@ import PostDetail from './post/PostDetail';
 import CreatePost from './post/CreatePost';
 import Post from './post/Post';
 import Posts from "./posts/Posts";
+import ProtectedRoute from "./pages/login/auth/ProtectedRoute";
+import { AuthProvider } from "./pages/login/auth/AuthContext";
 
-function App() {
+
+
+const App =() => {
   const user = false;
   return (
+    <AuthProvider>
     <Router>
       <Navbar />
       <Routes>
@@ -27,12 +32,13 @@ function App() {
           <Route path="/contact" element={ <Contact />} />
           <Route path="/write" element={ <Write />} />
           <Route path="/setting" element={user ? <Setting /> : <Register/>} ></Route>
-          <Route path="/post/:id" element={<PostDetail />} />
+          <Route path="/post/:id" element={<ProtectedRoute><PostDetail /></ProtectedRoute>} />
           <Route path="/single" element={ <Single />} />
           <Route path="/create-post" element={ <CreatePost />} />
-          <Route path="/post" element={ <Post />} />
+          <Route path="/post" element={ <ProtectedRoute><Post /></ProtectedRoute>} />
       </Routes>
     </Router>
+    </AuthProvider>
   );
 }
 
