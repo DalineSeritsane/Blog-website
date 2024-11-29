@@ -15,7 +15,7 @@ const Register = () => {
     setMessage(''); // Clear any existing messages
 
     try {
-      const response = await axios.post(`http:${process.env.REACT_APP_API_URL}:5050/api/users/register`, {
+      const response = await axios.post(`http://${process.env.REACT_APP_API_URL}/api/users/register`, {
         username,
         email,
         password,

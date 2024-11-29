@@ -14,7 +14,7 @@ const Login = () => {
     setMessage(''); // Reset message before each login attempt
 
     try {
-      const response = await axios.post(`http:${process.env.REACT_APP_API_URL}:5050/api/users/login`, {
+      const response = await axios.post(`http://${process.env.REACT_APP_API_URL}/api/users/login`, {
         username,
         password,
       });
